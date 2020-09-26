@@ -1,0 +1,59 @@
+html, body {
+    width: 100vw;
+    height: 100vh;
+    background: #111;
+    padding: 0;
+    margin: 0;
+}
+
+#root, .page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Hack', sans-serif;
+    color: white;
+}
+
+.page {
+
+    // background: url("https://i.ytimg.com/vi/XqKIOLvmsjw/maxresdefault.jpg");
+    // background: url("https://i.ytimg.com/vi/41vuqCTd2-U/maxresdefault.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.title {
+    font-size: 1.6rem;
+    color: white;
+}
+
+.sub {
+    font-size: 4rem;
+
+    .seconds {
+        font-size: 0.5em;
+        margin-left: 0.15em;
+        opacity: 0.6;
+    }
+}
+
+input {
+    margin-top: 1rem;
+    border-radius: 10px;
+    background: none;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    border: 2px solid white;
+    font-size: 1rem;
+    outline: none;
+    text-align: center;
+    font-family: 'Hack', sans-serif;
+    min-width: 20vw;
+    color: white;
+    &::placeholder {
+        color: white;
+    }
+}
