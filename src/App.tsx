@@ -3,6 +3,7 @@ import { Searchbar } from './searchbar';
 import { Time } from './time';
 
 import moment from 'moment';
+import wolf from './assets/wolf.jpg';
 
 let bgs = [
     'https://i.ytimg.com/vi/XqKIOLvmsjw/maxresdefault.jpg',
@@ -13,19 +14,11 @@ let bgs = [
     'https://wallpaperaccess.com/full/755385.jpg',
     'https://image.freepik.com/free-vector/vaporwave-retro-futuristic-background-abstract-laser-grid-tunnel-neon-colors-with-glow-effect-night-sky-with-stars-wallpaper-cyberpunk-party-music-poster-hackathon-meeting_87408-169.jpg',
     'https://media.discordapp.net/attachments/758581263535177748/759534641509826620/9k.png',
-    'https://images2.alphacoders.com/108/1080149.jpg',
+    wolf,
     'https://screenshots.gamebanana.com/img/ss/guis/5d84300a4ba7c.webp',
     'https://ak.picdn.net/shutterstock/videos/1025451314/thumb/1.jpg?ip=x480',
     'https://s3.amazonaws.com/pbblogassets/uploads/2020/04/17213507/Synthwave-and-Vaporwave-Tutorial-Look-of-Synthwave.jpg',
 ];
-
-/*
-BRAINSTORM COMMANDS
-google <string to search>
-timer <start timer>
-darkmode / lightmode
-
-*/
 
 let rr = list => list[Math.floor(Math.random() * list.length)];
 let dagen = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
