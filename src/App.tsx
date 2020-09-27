@@ -19,6 +19,14 @@ let bgs = [
     'https://s3.amazonaws.com/pbblogassets/uploads/2020/04/17213507/Synthwave-and-Vaporwave-Tutorial-Look-of-Synthwave.jpg',
 ];
 
+/*
+BRAINSTORM COMMANDS
+google <string to search>
+timer <start timer>
+darkmode / lightmode
+
+*/
+
 let rr = list => list[Math.floor(Math.random() * list.length)];
 let dagen = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 let maanden = ['Junary', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -26,7 +34,7 @@ let maanden = ['Junary', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'Au
 export function App() {
 
     return (
-        <div className="page" style={{backgroundImage: 'url(\'' + bgs[8] + '\')'}}>
+        <div className="page" style={{ backgroundImage: 'url(\'' + bgs[8] + '\')' }}>
             <div className="title">{dagen[moment().weekday()] + " the " + moment().date() + "th of " + maanden[moment().month()]}</div>
             <Time></Time>
             <Searchbar></Searchbar>
