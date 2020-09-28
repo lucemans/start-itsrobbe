@@ -28,7 +28,7 @@ jobs:
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        args: set image -n robbe --record deployment/start container=lvk.sh/r/startpage:${{ github.sha }}
+        args: set image -n robbe --record deployment/start start=lvk.sh/r/startpage:${{ github.sha }}
 
     - name: verify deployment
       uses: steebchen/kubectl@master
