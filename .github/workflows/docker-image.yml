@@ -17,6 +17,8 @@ jobs:
 
     - name: Build Image
       run: docker build . --tag lvk.sh/r/startpage:${{ github.sha }}
+    - name: Build Image2
+      run: docker build . --tag lvk.sh/r/startpage:latest
     
     - name: Push Image
       run: docker push lvk.sh/r/startpage
@@ -26,7 +28,7 @@ jobs:
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        args: set image -n robbe --record deployment/startpage container=lvk.sh/r/startpage:${{ github.sha }}
+        args: set image -n robbe --record deployment/start container=lvk.sh/r/startpage:${{ github.sha }}
 
     - name: verify deployment
       uses: steebchen/kubectl@master
@@ -34,4 +36,4 @@ jobs:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         KUBECTL_VERSION: "1.15"
       with:
-        args: '"rollout status -n robbe deployment/startpage"'
+        args: '"rollout status -n robbe deployment/start"'
