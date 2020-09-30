@@ -1,18 +1,39 @@
-name: Docker Image CI
-
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 jobs:
 
   build:
-
+    name: Build, push, and deploy
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --tag lvk.sh/r/startpage:$(date +%s)
+      name: Checkout Master
+
+    - name: Login Docker
+      run: echo ${{ secrets.DOCKER_LOGIN }} | docker login -u lucemans --password-stdin lvk.sh
+
+    - name: Build Image
+      run: docker build . --tag lvk.sh/r/startpage:${{ github.sha }}
+    - name: Build Image2
+      run: docker build . --tag lvk.sh/r/startpage:latest
+    
+    - name: Push Image
+      run: docker push lvk.sh/r/startpage
+    
+    - name: Execute Rollout
+      uses: steebchen/kubectl@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+      with:
+        args: set image -n robbe --record deployment/start start=lvk.sh/r/startpage:${{ github.sha }}
+
+    - name: verify deployment
+      uses: steebchen/kubectl@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        KUBECTL_VERSION: "1.15"
+      with:
+        args: '"rollout status -n robbe deployment/start"'
